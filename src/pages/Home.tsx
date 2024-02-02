@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import sampleImg from "../assets/sample.jpg";
+ 
 import axios from "axios";
 
 // Define an interface for the post object
@@ -34,13 +34,7 @@ const Home = () => {
   const [expandedPosts, setExpandedPosts] = useState<string[]>([]);
 
   // Function to toggle the expansion state of a post
-  const toggleExpansion = (postId: string) => {
-    setExpandedPosts((prevExpanded) =>
-      prevExpanded.includes(postId)
-        ? prevExpanded.filter((id) => id !== postId)
-        : [...prevExpanded, postId]
-    );
-  };
+  
 
   // Function to check if a post is expanded
   const isExpanded = (postId: string) => expandedPosts.includes(postId);
@@ -55,7 +49,8 @@ const Home = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {posts.map((post) => (
           <div key={post._id} className="bg-white rounded-lg shadow-md overflow-hidden">
-            <img className="w-full h-48 object-cover" src={new URL(post.image)} alt="Blog Post" />
+            <img className="w-full h-48 object-cover" src={new URL(post.image).toString()} alt="Blog Post" />
+
             <div className="p-4">
               <h2 className="text-lg font-bold mb-2">{post.title}</h2>
               {/* Show truncated content if not expanded */}
